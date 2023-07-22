@@ -42,13 +42,13 @@ const openHour=12;
 const closeHour=22;
 const isOpen=hour>=openHour && hour<=closeHour;
 console.log(isOpen);
-if(hour>=openHour && hour<=closeHour)
-  {
-alert("we are currently open");
-  }
-  else{
-    alert("We are currently closed");
-  }
+// if(hour>=openHour && hour<=closeHour)
+//   {
+// alert("we are currently open");
+//   }
+//   else{
+//     alert("We are currently closed");
+//   }
 return <footer>{
   new Date().toLocaleTimeString()
 } We are currently Open</footer>
