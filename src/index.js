@@ -1,36 +1,51 @@
 import React from "react";
 
 import ReactDOM from "react-dom/client";
+import './index.css';
 
 function App() {
-  return <div>
+  return <div className="container">
  <Header/>
  <Menu/>
+ <Pizza name="Pizza Spinacci" ingredient="Tomato ,mozarella,spinach and ricottea cheese" photoName="pizzas/spinaci.jpg" price={10}/>
+
+ <Pizza name="Pizza Funghi" ingredient="Tomato ,mozarella,spinach and ricottea cheese" photoName="pizzas/funghi.jpg" price={23}/>
+
+
   <Footer/>
   </div>;
 }
 
-function Pizza()
+function Pizza(props)
 {
-  return <div>
-  <img src="pizzas/spinaci.jpg" alt="Pizza Spinacci" />
-  <h2>Pizza Spinacci</h2>
-  <p>Tomato ,mozarella,spinach and ricottea cheese</p>
+  return <div className="pizza">
+  <img src={props.photoName} alt={props.name} />
+  <div>
+  <h3>{props.name}</h3>
+  <p>{props.ingredient}</p>
+  <span>{props.price}</span>
+  </div>
+  
   </div>
 }
 
 function Header ()
 {
-return  <h1>Fast React Pizza Co.</h1>
+  const HeadingStyle={color:'red', background:'whitesmoke',fontSize:'34px' ,fontFamily:'cursive'};
+// return  <h1 style={{color:'red', background:'grey',fontSize:'34px' ,fontFamily:'cursive'}}>Fast React Pizza Co.</h1>
+// return  <h1 style={HeadingStyle}>Fast React Pizza Co.</h1>
+return  (
+  <header  className="header footer">
+  <h1>Fast React Pizza Co.</h1>
+  </header>
+)
 }
 function Menu()
 {
-return <div>
+return <main className="menu">
 <h2>Our menu</h2>
-<Pizza/>
-<Pizza/>
-<Pizza/>
-</div>
+
+</main>
 }
 
 function Footer()
@@ -49,7 +64,7 @@ console.log(isOpen);
 //   else{
 //     alert("We are currently closed");
 //   }
-return <footer>{
+return <footer className="footer">{
   new Date().toLocaleTimeString()
 } We are currently Open</footer>
 }
