@@ -68,7 +68,7 @@ function Pizza(props)
   return <li className="pizza">
   <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name}  onClick={(e)=>alert(`You want to order ${props.pizzaObj.name}`)}/>
   <div>
-  <h3>{props.pizzaObj.name}</h3>
+  <h3 onDoubleClick={(e)=>alert(`this is ${props.pizzaObj.name}`)}>{props.pizzaObj.name} </h3>
   <p>{props.pizzaObj.ingredients}</p>
   <span>{props.pizzaObj.price+3}</span>
   </div>
@@ -94,16 +94,18 @@ function Menu()
   const numPizzas=pizzas.length;
 return <main className="menu">
 <h2>Our menu</h2>
-<ul className="pizzas">
+{
+  numPizzas>0 ? (<ul className="pizzas">
 
- {
-  numPizzas>0 && ( pizzaData.map((item)=>{
-    //  return   <Pizza key={item.name}  photoName={item.photoName} name={item.name} price={item.price} ingredient={item.ingredients} />
-    return <Pizza pizzaObj={item} key={item.name} />
-      }))
- }
-
-</ul>
+  {
+   ( pizzaData.map((item)=>{
+     //  return   <Pizza key={item.name}  photoName={item.photoName} name={item.name} price={item.price} ingredient={item.ingredients} />
+     return <Pizza pizzaObj={item} key={item.name} />
+       }))
+  }
+ 
+ </ul>): <p>We 're still working on Our Menu. Please Come back Later!</p>
+}
 </main>
 }
 
@@ -127,7 +129,7 @@ return <footer className="footer">{
  isOpen && (
   <div className="order">
   <p>we are open until {closeHour}:00. Come Visit us or order Online </p>
-  <button className="btn"></button>
+  <button className="btn">order</button>
   </div>
  )
 } </footer>
