@@ -132,18 +132,22 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen && (
-        <div className="order">
-          <p>
-            we are open until {closeHour}:00. Come Visit us or order Online{" "}
-          </p>
-          <button className="btn">order</button>
-        </div>
+        <Order closeHour={closeHour}/>
       )}{" "}
     </footer>
   );
 }
 //React 18
-
+function Order(props)
+{
+  return(
+  <div className="order">
+  <p>
+    we are open until {props.closeHour}:00. Come Visit us or order Online{" "}
+  </p>
+  <button className="btn">order</button>
+</div>)
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // it will render twice and find help to get bug
