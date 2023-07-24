@@ -62,22 +62,22 @@ function App() {
   );
 }
 
-function Pizza(props) {
-  console.log(props);
-  if(props.pizzaObj.soldOut) return null;
+function Pizza({pizzaObj}) {
+
+  if(pizzaObj.soldOut) return null;
   return (
     <li className="pizza">
       <img
-        src={props.pizzaObj.photoName}
-        alt={props.pizzaObj.name}
-        onClick={(e) => alert(`You want to order ${props.pizzaObj.name}`)}
+        src={pizzaObj.photoName}
+        alt={pizzaObj.name}
+        onClick={(e) => alert(`You want to order ${pizzaObj.name}`)}
       />
       <div>
-        <h3 onDoubleClick={(e) => alert(`this is ${props.pizzaObj.name}`)}>
-          {props.pizzaObj.name}{" "}
+        <h3 onDoubleClick={(e) => alert(`this is ${pizzaObj.name}`)}>
+          {pizzaObj.name}{" "}
         </h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price + 3}</span>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price + 3}</span>
       </div>
     </li>
   );
