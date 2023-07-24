@@ -64,9 +64,9 @@ function App() {
 
 function Pizza({pizzaObj}) {
 
-  if(pizzaObj.soldOut) return null;
+  // if(pizzaObj.soldOut) return null;
   return (
-    <li className="pizza">
+    <li className={`pizza ${pizzaObj.soldOut?"sold-out":""}`}>
       <img
         src={pizzaObj.photoName}
         alt={pizzaObj.name}
@@ -77,7 +77,10 @@ function Pizza({pizzaObj}) {
           {pizzaObj.name}{" "}
         </h3>
         <p>{pizzaObj.ingredients}</p>
-        <span>{pizzaObj.price + 3}</span>
+        {
+          pizzaObj.soldOut? <span>SOLD OUT</span>:<span>${pizzaObj.price}</span>
+        }
+        
       </div>
     </li>
   );
@@ -88,7 +91,7 @@ function Header() {
   // return  <h1 style={{color:'red', background:'grey',fontSize:'34px' ,fontFamily:'cursive'}}>Fast React Pizza Co.</h1>
   // return  <h1 style={HeadingStyle}>Fast React Pizza Co.</h1>
   return (
-    <header className="header footer">
+    <header className="header">
       <h1>Fast React Pizza Co.</h1>
     </header>
   );
@@ -101,15 +104,24 @@ function Menu() {
     <main className="menu">
       <h2>Our menu</h2>
       {numPizzas > 0 ? (
+        <>
+      <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious.
+          </p>
+     
         <ul className="pizzas">
           {pizzaData.map((item) => {
             //  return   <Pizza key={item.name}  photoName={item.photoName} name={item.name} price={item.price} ingredient={item.ingredients} />
             return <Pizza pizzaObj={item} key={item.name} />;
           })}
         </ul>
+        </>
       ) : (
         <p>We 're still working on Our Menu. Please Come back Later!</p>
-      )}
+      )
+     
+    }
     </main>
   );
 }
