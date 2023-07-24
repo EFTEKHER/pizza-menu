@@ -127,7 +127,9 @@ body {
 
 .pizza h3 {
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: bold;
+  font-family: 'cursive',
+
 }
 
 .pizza p {
